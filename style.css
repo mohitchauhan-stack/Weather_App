@@ -6,6 +6,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
+  color: white;
+  font-weight: 600;
 }
 
 body{
@@ -17,8 +19,13 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
 }
+
+/* ---------------- UTILITIES ------------------ */
+.txt_regular{
+  font-weight: 400;
+}
+
 
 body::before{
   content: "";
@@ -46,6 +53,7 @@ body::before{
 /* ---------------- Input - Container ------------------ */
 .input_container{
   position: relative;
+  margin-bottom: 25px;
 }
 
 .city_input{
@@ -79,4 +87,36 @@ body::before{
   display: flex;
   cursor: pointer;
   color: rgb(255, 255, 255, .7);
+}
+
+
+
+
+/* ---------------- Weather - Info ------------------ */
+.wearther_info{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.location_date_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.weather_summary_container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather_summary_img{
+  width: 120px;
+  height: 120px;
 }

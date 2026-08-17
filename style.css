@@ -114,9 +114,88 @@ body::before{
 .weather_summary_container{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .weather_summary_img{
   width: 120px;
   height: 120px;
+}
+
+.weather_summary_info{
+  text-align: end;
+}
+
+
+.weather_conditions_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.condition_items{
+  display: flex;
+  gap: 6px;
+}
+
+.condition_items span{
+  font-size: 30px;
+}
+
+
+.forecast_items_container{
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px;
+}
+
+.forecast_items_container::-webkit-scrollbar{
+  height: 8px;
+}
+
+.forecast_items_container::-webkit-scrollbar-track{
+  background: rgb(0, 0, 0, .1);
+  border-radius: 99px;
+}
+
+.forecast_items_container::-webkit-scrollbar-thumb{
+  background: rgb(0, 0, 0, 0.15);
+  border-radius: 99px;
+
+}
+
+.forecaste_item{
+  min-width: 70px;
+  background: rgb(255, 255, 255, .1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.forecaste_item_img{
+  width: 35px;
+  height: 35px;
+}
+
+
+
+
+/* ---------------- Search - Message ------------------ */
+.section_message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  margin-top: 25%;
+}
+
+.section_message img{
+  height: 180px;
+  width: fit-content;
 }

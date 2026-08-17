@@ -24,7 +24,7 @@
     </header>
 
     <!-- Weather - info - Section -->
-    <section class="wearther_info">
+    <section class="wearther_info" style="display: none;">
       <div class="location_date_container">
         <div class="location">
           <span class="material-symbols-outlined">location_on</span>
@@ -42,6 +42,72 @@
           <h1 class="temp_text">29 °C</h1>
           <h3 class="condition_txt txt_regular">Clouds</h3>
         </div>
+      </div>
+
+      <!-- Weather - Conditions - container -->
+      <div class="weather_conditions_container">
+        <div class="condition_items">
+          <span class="material-symbols-outlined">water_drop</span>
+          <div class="condition_info">
+            <h5 class="txt_regular">Humidity</h5>
+            <h5 class="humidity_value_txt">55%</h5>
+          </div>
+        </div>
+
+        <div class="condition_items">
+          <span class="material-symbols-outlined">air</span>
+          <div class="condition_info">
+            <h5 class="txt_regular">Wind Speed</h5>
+            <h5 class="wind_value_txt">2 M/s</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="forecast_items_container">
+        <div class="forecaste_item">
+          <h5 class="forecate_item_date txt_regular">05 Aug</h5>
+          <img src="./assets/weather/thunderstorm.svg" alt="" class="forecaste_item_img">
+          <h5 class="forecate_item_temp txt_regular">29 °C</h5>
+        </div>
+        <div class="forecaste_item">
+          <h5 class="forecate_item_date txt_regular">05 Aug</h5>
+          <img src="./assets/weather/thunderstorm.svg" alt="" class="forecaste_item_img">
+          <h5 class="forecate_item_temp txt_regular">29 °C</h5>
+        </div>
+        <div class="forecaste_item">
+          <h5 class="forecate_item_date txt_regular">05 Aug</h5>
+          <img src="./assets/weather/thunderstorm.svg" alt="" class="forecaste_item_img">
+          <h5 class="forecate_item_temp txt_regular">29 °C</h5>
+        </div>
+        <div class="forecaste_item">
+          <h5 class="forecate_item_date txt_regular">05 Aug</h5>
+          <img src="./assets/weather/thunderstorm.svg" alt="" class="forecaste_item_img">
+          <h5 class="forecate_item_temp txt_regular">29 °C</h5>
+        </div>
+        <div class="forecaste_item">
+          <h5 class="forecate_item_date txt_regular">05 Aug</h5>
+          <img src="./assets/weather/thunderstorm.svg" alt="" class="forecaste_item_img">
+          <h5 class="forecate_item_temp txt_regular">29 °C</h5>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGE -->
+    <!-- MESSAGE - Search -->
+    <section class="search_city section_message">
+      <img src="./assets/message/search-city.png" alt="section_message_img">
+      <div>
+        <h1>Search City</h1>
+        <h4 class="txt_regular">Find out the weather conditions of the city</h4>
+      </div>
+    </section>
+
+    <!-- MESSAGE - Not found -->
+    <section class="not_found section_message" style="display: none;">
+      <img src="./assets/message/not-found.png" alt="section_message_img">
+      <div>
+        <h1>Search City</h1>
+        <h4 class="txt_regular">Find out the weather conditions of the city</h4>
       </div>
     </section>
     

@@ -71,7 +71,7 @@ async function updateWeatherInfo(city) {
     return;
   }
 
-  // console.log(weatherData);
+  console.log(weatherData);
 
   const {
     name: country,
@@ -96,7 +96,7 @@ async function updateForecastInfo(city) {
   const forecastsData = await getfetchData("forecast", city);
   const timeTaken = "12:00:00";
   const todayDate = new Date().toISOString().split("T")[0];
-  // forecast_items_container.innerHTML = "";
+  forecast_items_container.innerHTML = "";
 
   forecastsData.list.forEach((forecastWeather) => {
     if (
@@ -109,7 +109,7 @@ async function updateForecastInfo(city) {
 }
 
 function updateForecastItems(weatherData) {
-  // console.log(weatherData);
+  console.log(weatherData);
   const {
     dt_txt: date,
     weather: [{ id }],
@@ -121,7 +121,7 @@ function updateForecastItems(weatherData) {
     day: "2-digit",
     month: "short",
   };
-  const dateResult = dateTaken.toLocaleDateString("es-IN", dateOption);
+  const dateResult = dateTaken.toLocaleDateString("en-IN", dateOption);
 
   const forecast_item = `
     <div class="forecaste_item">

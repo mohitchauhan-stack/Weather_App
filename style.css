@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: "VT323", monospace;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 body {
@@ -57,7 +57,7 @@ body::before {
 
 .city_input {
   width: 100%;
-  padding: 10px 16px;
+  padding: 10px 12px;
   border-radius: 99px;
   border: 2px solid transparent;
   background: rgb(0, 0, 0, 0.15);
@@ -78,14 +78,20 @@ body::before {
 
 .search_btn {
   position: absolute;
-  right: 16px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  background: rgb(255, 255, 255, 0.1);
   border: none;
+  border-radius: 110px;
+  padding: 3px;
   display: flex;
   cursor: pointer;
   color: rgb(255, 255, 255, 0.7);
+}
+
+.search_bnt_img {
+  width: 25px;
 }
 
 /* ---------------- Weather - Info ------------------ */

@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  font-family: "VT323", monospace;
   color: white;
   font-weight: 600;
 }
 
-body{
+body {
   background: url(./assets/bg.jpg);
   width: 100%;
   height: 100dvh;
@@ -22,62 +21,62 @@ body{
 }
 
 /* ---------------- UTILITIES ------------------ */
-.txt_regular{
+.txt_regular {
   font-weight: 400;
 }
 
-
-body::before{
+body::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100dvh;
-  background: rgb(0, 0, 0, .15);
+  background: rgb(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
 }
 
-
-
 /* ---------------- Main - Container ------------------ */
-.main_container{
+.main_container {
   width: 300px;
   height: 496px;
   z-index: 10;
-  background: linear-gradient(to top, rgb(0, 0, 0, .15), rgb(255, 255, 255, .15));
+  background: linear-gradient(
+    to top,
+    rgb(0, 0, 0, 0.15),
+    rgb(255, 255, 255, 0.15)
+  );
   border-radius: 12px;
   backdrop-filter: blur(15px);
   padding: 20px;
 }
 
-
 /* ---------------- Input - Container ------------------ */
-.input_container{
+.input_container {
   position: relative;
   margin-bottom: 25px;
 }
 
-.city_input{
+.city_input {
   width: 100%;
   padding: 10px 16px;
   border-radius: 99px;
   border: 2px solid transparent;
-  background: rgb(0, 0, 0, .15);
+  background: rgb(0, 0, 0, 0.15);
   outline: none;
   font-weight: 500;
-  transition: .2s border ease-in-out;
-  color: rgb(255, 255, 255, .7);
+  transition: 0.2s border ease-in-out;
+  color: rgb(255, 255, 255, 0.7);
   padding-right: 45px;
 }
 
-.city_input:focus{
+.city_input:focus {
   border: 3px solid rgb(0, 0, 0, 0.15);
 }
 
-.city_input::placeholder{
-  color: rgb(255, 255, 255, .7);
+.city_input::placeholder {
+  color: rgb(255, 255, 255, 0.7);
 }
 
-.search_btn{
+.search_btn {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -86,64 +85,59 @@ body::before{
   border: none;
   display: flex;
   cursor: pointer;
-  color: rgb(255, 255, 255, .7);
+  color: rgb(255, 255, 255, 0.7);
 }
 
-
-
-
 /* ---------------- Weather - Info ------------------ */
-.wearther_info{
+.wearther_info {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.location_date_container{
+.location_date_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.location{
+.location {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.weather_summary_container{
+.weather_summary_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.weather_summary_img{
+.weather_summary_img {
   width: 120px;
   height: 120px;
 }
 
-.weather_summary_info{
+.weather_summary_info {
   text-align: end;
 }
 
-
-.weather_conditions_container{
+.weather_conditions_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.condition_items{
+.condition_items {
   display: flex;
   gap: 6px;
 }
 
-.condition_items span{
+.condition_items span {
   font-size: 30px;
 }
 
-
-.forecast_items_container{
+.forecast_items_container {
   display: flex;
   gap: 6px;
   overflow-x: auto;
@@ -151,24 +145,23 @@ body::before{
   padding: 12px;
 }
 
-.forecast_items_container::-webkit-scrollbar{
+.forecast_items_container::-webkit-scrollbar {
   height: 8px;
 }
 
-.forecast_items_container::-webkit-scrollbar-track{
-  background: rgb(0, 0, 0, .1);
+.forecast_items_container::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0, 0.1);
   border-radius: 99px;
 }
 
-.forecast_items_container::-webkit-scrollbar-thumb{
+.forecast_items_container::-webkit-scrollbar-thumb {
   background: rgb(0, 0, 0, 0.15);
   border-radius: 99px;
-
 }
 
-.forecaste_item{
+.forecaste_item {
   min-width: 70px;
-  background: rgb(255, 255, 255, .1);
+  background: rgb(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -177,16 +170,13 @@ body::before{
   border-radius: 12px;
 }
 
-.forecaste_item_img{
+.forecaste_item_img {
   width: 35px;
   height: 35px;
 }
 
-
-
-
 /* ---------------- Search - Message ------------------ */
-.section_message{
+.section_message {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -195,7 +185,7 @@ body::before{
   margin-top: 25%;
 }
 
-.section_message img{
+.section_message img {
   height: 180px;
   width: fit-content;
 }

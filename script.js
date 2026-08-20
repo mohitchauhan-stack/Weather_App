@@ -53,14 +53,14 @@ function getCurrentDate() {
 }
 
 function getWeatherIcon(id) {
-  if (id <= 232) return "thunderstrom.svg";
-  if (id <= 321) return "drizzel.svg";
-  if (id <= 531) return "rain.svg";
-  if (id <= 622) return "snow.svg";
-  if (id <= 781) return "atmosphere.svg";
-  if (id <= 800) return "clear.svg";
-  else return "clouds.svg";
-  console.log(id);
+  if (id <= 232) return "thunderstrom.png";
+  if (id <= 321) return "drizzel.png";
+  if (id <= 531) return "rain.png";
+  if (id <= 622) return "snow.png";
+  if (id <= 781) return "atmosphere.png";
+  if (id <= 800) return "clear.png";
+  else return "clouds.png";
+  // console.log(id);
 }
 
 async function updateWeatherInfo(city) {
@@ -109,7 +109,7 @@ async function updateForecastInfo(city) {
 }
 
 function updateForecastItems(weatherData) {
-  console.log(weatherData);
+  // console.log(weatherData);
   const {
     dt_txt: date,
     weather: [{ id }],

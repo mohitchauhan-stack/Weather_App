@@ -152,7 +152,7 @@
 // --------- FETCH ALL ELEMENTS ---------
 const city_input = document.querySelector(".city_input");
 const search_btn = document.querySelector(".search_btn");
-const wearther_info = document.querySelector(".wearther_info");
+const weather_info = document.querySelector(".weather_info");
 const country_txt = document.querySelector(".country_txt");
 const search_city = document.querySelector(".search_city");
 
@@ -169,6 +169,20 @@ search_btn.addEventListener("click", () => {
 
 function searchCity() {
   search_city.style.display = "none";
-  wearther_info.style.display = "flex";
+  weather_info.style.display = "flex";
+
   country_txt.textContent = city_input.value;
+
+  getWeatherData(city_input.value);
+}
+
+// --------- WEATHER API ---------
+const API =
+  "https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8f50733eee629e68be38f19487ab2e93&units=metric";
+
+async function getWeatherData(city) {
+  const response = await fetch(API.replace("{city}", city));
+
+  const data = await response.json();
+  console.log(data);
 }

@@ -47,6 +47,8 @@ body::before {
   border-radius: 12px;
   backdrop-filter: blur(15px);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---------------- Input - Container ------------------ */
@@ -78,13 +80,13 @@ body::before {
 
 .search_btn {
   position: absolute;
-  right: 4px;
+  right: 2.5px;
   top: 50%;
   transform: translateY(-50%);
   background: rgb(255, 255, 255, 0.1);
   border: none;
   border-radius: 110px;
-  padding: 3px;
+  padding: 4px;
   display: flex;
   cursor: pointer;
   color: rgb(255, 255, 255, 0.7);

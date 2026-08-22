@@ -153,8 +153,14 @@
 const city_input = document.querySelector(".city_input");
 const search_btn = document.querySelector(".search_btn");
 const weather_info = document.querySelector(".weather_info");
-const country_txt = document.querySelector(".country_txt");
 const search_city = document.querySelector(".search_city");
+const country_txt = document.querySelector(".country_txt");
+const current_date_txt = document.querySelector(".current_date_txt");
+const temp_text = document.querySelector(".temp_text");
+const condition_txt = document.querySelector(".condition_txt");
+const humidity_value_txt = document.querySelector(".humidity_value_txt");
+const wind_value_txt = document.querySelector(".wind_value_txt");
+const weather_summary_img = document.querySelector(".weather_summary_img");
 
 // --------- USER INTERACTIONS ---------
 city_input.addEventListener("keydown", (e) => {
@@ -170,13 +176,13 @@ search_btn.addEventListener("click", () => {
 function searchCity() {
   search_city.style.display = "none";
   weather_info.style.display = "flex";
-
-  country_txt.textContent = city_input.value;
+  weather_info.style.flexDirection = "column";
+  weather_info.style.gap = "25px";
 
   getWeatherData(city_input.value);
 }
 
-// --------- WEATHER API ---------
+// --------- GET WEATHER DATA ---------
 const API =
   "https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8f50733eee629e68be38f19487ab2e93&units=metric";
 
@@ -184,5 +190,32 @@ async function getWeatherData(city) {
   const response = await fetch(API.replace("{city}", city));
 
   const data = await response.json();
+
+  country_txt.textContent = data.name;
+  current_date_txt.textContent = new Date().toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    weekday: "short",
+  });
+  temp_text.textContent = Math.round(data.main.temp) + " °C";
+  condition_txt.textContent = data.weather[0].main;
+  humidity_value_txt.textContent = data.main.humidity;
+  wind_value_txt.textContent = data.wind.speed + " M/s";
+  weather_summary_img.src = getWeatherImage(data.weather[0].main);
+
   console.log(data);
+}
+
+// --------- HELPER FUNCTION ---------
+function getWeatherImage(condition) {
+  const weatherImages = {
+    Clear: "./assets/weather/clear.png",
+    Clouds: "./assets/weather/clouds.png",
+    Rain: "./assets/weather/rain.png",
+    Drizzle: "./assets/weather/drizzle.png",
+    Thunderstorm: "./assets/weather/thunderstorm.png",
+    Snow: "./assets/weather/snow.png",
+    Mist: "./assets/weather/mist.png",
+  };
+  return weatherImages[condition];
 }

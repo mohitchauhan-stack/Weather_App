@@ -21,6 +21,7 @@ const weather_summary_img = document.querySelector(".weather_summary_img");
 const forecast_items_container = document.querySelector(
   ".forecast_items_container",
 );
+const not_found = document.querySelector(".not_found");
 
 const forecast_item_img = document.querySelector(".forecast_item_img");
 const forecast_item_date = document.querySelector(".forecast_item_date");
@@ -45,7 +46,6 @@ function searchCity() {
   weather_info.style.gap = "25px";
 
   getWeatherData(city_input.value);
-  getForecastData(city_input.value);
 }
 
 // --------- GET WEATHER DATA ---------
@@ -60,7 +60,13 @@ async function getWeatherData(city) {
 
   const data = await response.json();
 
+  if (data.cod !== 200) {
+    errorMessage();
+    return;
+  }
+
   country_txt.textContent = data.name;
+
   current_date_txt.textContent = new Date().toLocaleDateString("en-IN", {
     day: "numeric",
     month: "short",
@@ -74,6 +80,14 @@ async function getWeatherData(city) {
   weather_summary_img.src = getWeatherImage(data.weather[0].main);
 
   // console.log(data);
+
+  getForecastData(city_input.value);
+}
+
+function errorMessage() {
+  weather_info.style.display = "none";
+  search_city.style.display = "none";
+  not_found.style.display = "flex";
 }
 
 // --------- GET FRORECAST DATA ---------
@@ -92,22 +106,7 @@ async function getForecastData(city) {
   // forecast_item_img.src = getWeatherImage(data.list[0].weather[0].main);
 }
 
-// --------- HELPER FUNCTION ---------
-function getWeatherImage(condition) {
-  const weatherImages = {
-    Clear: "./assets/weather/clear.png",
-    Clouds: "./assets/weather/clouds.png",
-    Rain: "./assets/weather/rain.png",
-    Drizzle: "./assets/weather/drizzle.png",
-    Thunderstorm: "./assets/weather/thunderstorm.png",
-    Snow: "./assets/weather/snow.png",
-    Mist: "./assets/weather/mist.png",
-  };
-
-  return weatherImages[condition];
-}
-
-// --------- RENFER FORECAST FUNCTION ---------
+// --------- RENDER FORECAST FUNCTION ---------
 function renderForecast(data) {
   forecast_items_container.innerHTML = "";
 
@@ -151,4 +150,19 @@ function renderForecast(data) {
 
     forecast_items_container.appendChild(forecast_item);
   });
+}
+
+// --------- HELPER FUNCTION ---------
+function getWeatherImage(condition) {
+  const weatherImages = {
+    Clear: "./assets/weather/clear.png",
+    Clouds: "./assets/weather/clouds.png",
+    Rain: "./assets/weather/rain.png",
+    Drizzle: "./assets/weather/drizzle.png",
+    Thunderstorm: "./assets/weather/thunderstorm.png",
+    Snow: "./assets/weather/snow.png",
+    Mist: "./assets/weather/mist.png",
+  };
+
+  return weatherImages[condition];
 }

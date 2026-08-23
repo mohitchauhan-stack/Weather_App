@@ -45,6 +45,8 @@ function searchCity() {
     return;
   }
 
+  not_found.style.display = "none";
+
   search_city.style.display = "none";
   weather_info.style.display = "flex";
   weather_info.style.flexDirection = "column";

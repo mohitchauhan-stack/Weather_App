@@ -1,43 +1,51 @@
-# Weather App 🌤️
+# 🌦️ Weather App
 
-A simple and responsive weather application that displays current weather conditions and upcoming forecasts for any city.
+A simple and responsive Weather App built using **HTML, CSS, and JavaScript** that fetches real-time weather data using the **OpenWeather API**.
 
 ## ✨ Features
 
-- Search weather by city
-- Current temperature and weather condition
-- Humidity and wind speed
-- 5-day forecast
-- Dynamic weather icons
-- Responsive glassmorphism UI
+- 🔍 Search weather by city
+- 🌡️ Current temperature & weather condition
+- 💧 Humidity & wind speed
+- 📅 5-day weather forecast
+- 🖼️ Custom weather icons
+- ⏳ Loading states
+- ❌ City not found & network error handling
+- 📱 Responsive UI
 
-## 🛠️ Built With
+## 🛠️ Tech Stack
 
-- HTML
-- CSS
+- HTML5
+- CSS3
 - JavaScript
 - OpenWeather API
 
-## 📸 Screenshot
+## 📸 Screenshots
 
-[View App](./assets/preview.png)
+### Weather Dashboard
 
-## 🚀 Getting Started
+![Weather App](./assets/weather-dashboard.png)
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Search for any city to view its weather
+### City Not Found
 
-## 📁 Project Structure
+![City Not Found](./assets/city-not-found.png)
 
-```text
-weather-app/
-├── assets/
-├── index.html
-├── style.css
-└── script.js
-```
+## 🧠 What I Practiced
 
----
+- Working with REST APIs
+- `fetch()` & `async/await`
+- DOM manipulation
+- Dynamic UI rendering
+- JSON data processing
+- Error handling
+- Loading states
 
-Made with HTML, CSS & JavaScript.
+## 🚀 Live Demo
+
+[View Live Demo](https://mohitchauhan-stack.github.io/Weather_App/)
+
+## 👨‍💻 Author
+
+**Mohit Chauhan**
+
+Built as a JavaScript practice project.

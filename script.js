@@ -22,11 +22,11 @@ const forecast_items_container = document.querySelector(
   ".forecast_items_container",
 );
 const not_found = document.querySelector(".not_found");
-const loading = document.querySelector(".loading");
+const network_error = document.querySelector(".network_error");
+const forecast_error = document.querySelector(".forecast_error");
+const forecast_loading = document.querySelector(".forecast_loading");
 
-const forecast_item_img = document.querySelector(".forecast_item_img");
-const forecast_item_date = document.querySelector(".forecast_item_date");
-const forecast_item_temp = document.querySelector(".forecast_item_temp");
+const loading = document.querySelector(".loading");
 
 // --------- USER INTERACTIONS ---------
 city_input.addEventListener("keydown", (e) => {
@@ -46,57 +46,65 @@ function searchCity() {
     return;
   }
 
-  loading.style.display = "flex";
   not_found.style.display = "none";
-
+  network_error.style.display = "none";
   search_city.style.display = "none";
   weather_info.style.display = "none";
+
+  loading.style.display = "flex";
 
   getWeatherData(city_input.value);
 }
 
-// --------- GET WEATHER DATA ---------
+// --------- API KEYS ---------
 const API =
   "https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8f50733eee629e68be38f19487ab2e93&units=metric";
 
 const FORECAST_API =
   "https://api.openweathermap.org/data/2.5/forecast?q={city}&appid=8f50733eee629e68be38f19487ab2e93&units=metric";
 
+// --------- GET WEATHER DATA ---------
 async function getWeatherData(city) {
-  const response = await fetch(API.replace("{city}", city));
+  try {
+    const response = await fetch(API.replace("{city}", city));
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (data.cod !== 200) {
+    if (data.cod !== 200) {
+      loading.style.display = "none";
+
+      errorMessage();
+      return;
+    }
+
     loading.style.display = "none";
+    network_error.style.display = "none";
 
-    errorMessage();
-    return;
+    weather_info.style.display = "flex";
+    weather_info.style.flexDirection = "column";
+    weather_info.style.gap = "25px";
+
+    country_txt.textContent = data.name;
+
+    current_date_txt.textContent = new Date().toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+      weekday: "short",
+    });
+
+    temp_text.textContent = Math.round(data.main.temp) + " °C";
+    condition_txt.textContent = data.weather[0].main;
+    humidity_value_txt.textContent = data.main.humidity;
+    wind_value_txt.textContent = data.wind.speed + " M/s";
+    weather_summary_img.src = getWeatherImage(data.weather[0].main);
+
+    // console.log(data);
+
+    getForecastData(city_input.value);
+  } catch (error) {
+    loading.style.display = "none";
+    network_error.style.display = "flex";
   }
-
-  loading.style.display = "none";
-
-  weather_info.style.display = "flex";
-  weather_info.style.flexDirection = "column";
-  weather_info.style.gap = "25px";
-
-  country_txt.textContent = data.name;
-
-  current_date_txt.textContent = new Date().toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "short",
-    weekday: "short",
-  });
-
-  temp_text.textContent = Math.round(data.main.temp) + " °C";
-  condition_txt.textContent = data.weather[0].main;
-  humidity_value_txt.textContent = data.main.humidity;
-  wind_value_txt.textContent = data.wind.speed + " M/s";
-  weather_summary_img.src = getWeatherImage(data.weather[0].main);
-
-  // console.log(data);
-
-  getForecastData(city_input.value);
 }
 
 function errorMessage() {
@@ -107,18 +115,33 @@ function errorMessage() {
 
 // --------- GET FRORECAST DATA ---------
 async function getForecastData(city) {
-  let response = await fetch(FORECAST_API.replace("{city}", city));
+  forecast_loading.style.display = "block";
+  forecast_error.style.display = "none";
+  try {
+    let response = await fetch(FORECAST_API.replace("{city}", city));
 
-  let data = await response.json();
+    let data = await response.json();
 
-  renderForecast(data);
-  // console.log(data);
-  // forecast_item_temp.textContent = Math.round(data.list[0].main.temp) + " °C";
-  // forecast_item_date.textContent = new Date().toLocaleDateString("en-IN", {
-  //   day: "numeric",
-  //   month: "short",
-  // });
-  // forecast_item_img.src = getWeatherImage(data.list[0].weather[0].main);
+    if (data.cod !== "200" && data.cod !== 200) {
+      throw new Error("Forecast unavailable");
+    }
+
+    renderForecast(data);
+
+    forecast_loading.style.display = "none";
+    // console.log(data);
+    // forecast_item_temp.textContent = Math.round(data.list[0].main.temp) + " °C";
+    // forecast_item_date.textContent = new Date().toLocaleDateString("en-IN", {
+    //   day: "numeric",
+    //   month: "short",
+    // });
+    // forecast_item_img.src = getWeatherImage(data.list[0].weather[0].main);
+  } catch (error) {
+    forecast_loading.style.display = "none";
+    forecast_error.style.display = "flex";
+
+    console.log(error);
+  }
 }
 
 // --------- RENDER FORECAST FUNCTION ---------
@@ -149,19 +172,19 @@ function renderForecast(data) {
     forecast_item.classList.add("forecast_item");
 
     forecast_item.innerHTML = `
-      <h5 class="forecast_item_date txt_regular">
-        ${date.toLocaleDateString("en-IN", {
-          day: "numeric",
-          month: "short",
-        })}
-      </h5>
+        <h5 class="forecast_item_date txt_regular">
+          ${date.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+          })}
+        </h5>
 
-      <img src="${getWeatherImage(item.weather[0].main)}" alt="${item.weather[0].main}" class="forecast_item_img">
+        <img src="${getWeatherImage(item.weather[0].main)}" alt="${item.weather[0].main}" class="forecast_item_img">
 
-      <h5 class="forecast_item_temp txt_regular">
-        ${Math.round(item.main.temp) + " °C"}
-      </h5>
-    `;
+        <h5 class="forecast_item_temp txt_regular">
+          ${Math.round(item.main.temp) + " °C"}
+        </h5>
+      `;
 
     forecast_items_container.appendChild(forecast_item);
   });

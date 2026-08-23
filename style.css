@@ -167,7 +167,7 @@ body::before {
   border-radius: 99px;
 }
 
-.forecaste_item {
+.forecast_item {
   min-width: 70px;
   background: rgb(255, 255, 255, 0.1);
   display: flex;
@@ -178,7 +178,7 @@ body::before {
   border-radius: 12px;
 }
 
-.forecaste_item_img {
+.forecast_item_img {
   width: 35px;
   height: 35px;
 }

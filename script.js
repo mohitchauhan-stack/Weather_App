@@ -40,6 +40,11 @@ search_btn.addEventListener("click", () => {
 });
 
 function searchCity() {
+  if (!city_input.value.trim()) {
+    alert("Input field is empty!");
+    return;
+  }
+
   search_city.style.display = "none";
   weather_info.style.display = "flex";
   weather_info.style.flexDirection = "column";
@@ -97,7 +102,7 @@ async function getForecastData(city) {
   let data = await response.json();
 
   renderForecast(data);
-  console.log(data);
+  // console.log(data);
   // forecast_item_temp.textContent = Math.round(data.list[0].main.temp) + " °C";
   // forecast_item_date.textContent = new Date().toLocaleDateString("en-IN", {
   //   day: "numeric",

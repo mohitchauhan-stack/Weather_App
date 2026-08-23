@@ -22,6 +22,7 @@ const forecast_items_container = document.querySelector(
   ".forecast_items_container",
 );
 const not_found = document.querySelector(".not_found");
+const loading = document.querySelector(".loading");
 
 const forecast_item_img = document.querySelector(".forecast_item_img");
 const forecast_item_date = document.querySelector(".forecast_item_date");
@@ -45,12 +46,11 @@ function searchCity() {
     return;
   }
 
+  loading.style.display = "flex";
   not_found.style.display = "none";
 
   search_city.style.display = "none";
-  weather_info.style.display = "flex";
-  weather_info.style.flexDirection = "column";
-  weather_info.style.gap = "25px";
+  weather_info.style.display = "none";
 
   getWeatherData(city_input.value);
 }
@@ -68,9 +68,17 @@ async function getWeatherData(city) {
   const data = await response.json();
 
   if (data.cod !== 200) {
+    loading.style.display = "none";
+
     errorMessage();
     return;
   }
+
+  loading.style.display = "none";
+
+  weather_info.style.display = "flex";
+  weather_info.style.flexDirection = "column";
+  weather_info.style.gap = "25px";
 
   country_txt.textContent = data.name;
 
